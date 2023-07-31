@@ -25,7 +25,7 @@ const resolvers = {
             const user = await User.findOne({ email });
 
             if (!user) {
-                throw new AuthenticationError('Cannot find user associated with this email address');
+                throw new AuthenticationError('Cannot find account with this email address');
             }
 
             const correctPass = await user.isCorrectPassword(password);
@@ -47,7 +47,7 @@ const resolvers = {
                 )
                 // .populate('savedBooks');
             }
-            throw new AuthenticationError('But first, log in.')
+            throw new AuthenticationError('First log in.')
         },
         removeBook: async (parent, { bookId }, context) => {
             if (context.user) {
@@ -57,7 +57,7 @@ const resolvers = {
                     { new: true }
                 );
             }
-            throw new AuthenticationError('Gotta login')
+            throw new AuthenticationError('LOGIN NOW')
         },
     },
 };
